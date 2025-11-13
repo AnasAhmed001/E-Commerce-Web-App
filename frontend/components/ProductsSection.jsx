@@ -1,0 +1,63 @@
+"use client";
+
+import { useProducts } from "@/hooks/useProducts";
+import { ProductCard } from "./ProductCard";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader2, ShoppingBag, TrendingUp } from "lucide-react";
+
+export const ProductsSection = () => {
+  const { products, isLoading, error } = useProducts();
+
+  return (
+    <section className="container mx-auto px-4 py-12">
+      {/* Section Header */}
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <TrendingUp className="w-8 h-8 text-primary" />
+            Featured Products
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
+            Discover our best products
+          </p>
+        </div>
+      </div>
+
+      {/* Loading State */}
+      {isLoading && (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-12 h-12 animate-spin text-primary" />
+        </div>
+      )}
+
+      {/* Error State */}
+      {error && (
+        <Alert variant="destructive" className="mb-6">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      {/* Empty State */}
+      {!isLoading && !error && products.length === 0 && (
+        <div className="text-center py-20">
+          <ShoppingBag className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+          <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400">
+            No products available
+          </h3>
+          <p className="text-gray-500 dark:text-gray-500 mt-2">
+            Check back later for new products
+          </p>
+        </div>
+      )}
+
+      {/* Products Grid */}
+      {!isLoading && !error && products.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+};
