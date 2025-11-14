@@ -1,19 +1,18 @@
 "use client";
 
 import { ProductCard } from "./ProductCard";
-import { ShoppingBag, TrendingUp } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 
 export const ProductsSection = ({ products = [] }) => {
   return (
     <section className="container mx-auto px-4 py-12">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-center mb-8">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <TrendingUp className="w-8 h-8 text-primary" />
+          <h2 className="text-3xl font-bold text-foreground flex items-center gap-2">
             Featured Products
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <p className="text-muted-foreground mt-2 text-center">
             Discover our best products
           </p>
         </div>

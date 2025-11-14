@@ -37,22 +37,25 @@ export const ProductCard = ({ product }) => {
             </div>
           </div>
         </CardHeader>
-        <CardContent className="p-3">
-          <CardTitle className="text-base font-semibold line-clamp-1 mb-1">
+        <CardContent className="p-2">
+          <CardTitle className="text-xl font-bold line-clamp-2 mb-2 leading-tight tracking-tight">
             {product.name}
           </CardTitle>
-          <p className="text-gray-600 dark:text-gray-400 text-xs line-clamp-2 mb-2">
+          <p className="text-muted-foreground text-sm line-clamp-2 mb-3 leading-relaxed">
             {product.description}
           </p>
-          <div className="flex items-center justify-between">
-            <span className="text-xl font-bold text-primary">
-              ${product.price}
-            </span>
+          <div className="flex items-baseline justify-between mt-auto">
+            <div>
+              <span className="text-lg font-medium text-foreground tracking-tight">
+                ${product.price}
+              </span>
+              <span className="text-xs text-muted-foreground ml-1">USD</span>
+            </div>
           </div>
         </CardContent>
-        <CardFooter className="p-3 pt-0">
-          <Button className="w-full" size="default" onClick={handleAddToCart}>
-            <ShoppingCart className="w-3 h-3 mr-1" />
+        <CardFooter className="p-4 pt-0">
+          <Button className="w-full font-semibold" size="default" onClick={handleAddToCart}>
+            <ShoppingCart className="w-4 h-4 mr-2" />
             Add to Cart
           </Button>
         </CardFooter>

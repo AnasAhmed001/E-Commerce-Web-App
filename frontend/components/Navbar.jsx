@@ -3,16 +3,17 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, ShoppingCart, User, Search } from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
 
 export const Navbar = () => {
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+    <header className="border-b sticky top-0 z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <ShoppingBag className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            <span className="text-2xl font-bold text-foreground">
               ShopHub
             </span>
           </Link>
@@ -24,7 +25,7 @@ export const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search for products..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
               />
             </div>
           </div>
@@ -44,6 +45,7 @@ export const Navbar = () => {
                 <User className="w-5 h-5" />
               </Button>
             </Link>
+            <ModeToggle />
           </div>
         </div>
       </div>
